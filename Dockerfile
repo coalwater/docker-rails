@@ -4,7 +4,7 @@ RUN apt update
 RUN apt upgrade -y
 
 RUN echo 'Installing build essentials'
-RUN apt install build-essential
+RUN apt install -y build-essential
 
 RUN echo 'Installing curl and wget'
 RUN apt install -y curl wget
@@ -34,7 +34,7 @@ RUN echo 'Creating dev user'
 RUN useradd -m -p dev -s /usr/bin/fish dev
 
 RUN echo 'Installing ruby dependencies'
-RUN apt install zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev
+RUN apt install -y zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev
 
 RUN echo 'Installing ruby 2.2.1 under dev user'
 RUN su -l dev -c 'ruby-install ruby 2.2.1 --no-install-deps'
