@@ -10,23 +10,23 @@ RUN echo 'Installing curl and wget'
 RUN apt-get install -qqy curl wget
 
 RUN echo 'installing fish shell'
-echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/2/Debian_7.0/ /' >> /etc/apt/sources.list.d/fish.list
-curl -Ls http://download.opensuse.org/repositories/shells:fish:release:2/Debian_7.0/Release.key | apt-key add -
+RUN echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/2/Debian_7.0/ /' >> /etc/apt/sources.list.d/fish.list
+RUN curl -Ls http://download.opensuse.org/repositories/shells:fish:release:2/Debian_7.0/Release.key | apt-key add -
 RUN apt-get update -qq
 RUN apt-get install -qqy fish
 RUN chsh -s /usr/bin/fish
 
 RUN echo 'installing ruby install'
-curl -Ls https://github.com/postmodern/ruby-install/archive/v0.5.0.tar.gz | tar -xz -C /tmp
-make -C /tmp/ruby-install-0.5.0/ install
+RUN curl -Ls https://github.com/postmodern/ruby-install/archive/v0.5.0.tar.gz | tar -xz -C /tmp
+RUN make -C /tmp/ruby-install-0.5.0/ install
 
 RUN echo 'installing chruby'
-curl -Ls https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz | tar -xz -C /tmp
-make -C /tmp/chruby-0.3.9/ install
+RUN curl -Ls https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz | tar -xz -C /tmp
+RUN make -C /tmp/chruby-0.3.9/ install
 
 RUN echo 'installing chruby fish'
-curl -Ls https://github.com/JeanMertz/chruby-fish/archive/v0.6.0.tar.gz | tar -xz -C /tmp
-make -C /tmp/chruby-fish-0.6.0/ install
+RUN curl -Ls https://github.com/JeanMertz/chruby-fish/archive/v0.6.0.tar.gz | tar -xz -C /tmp
+RUN make -C /tmp/chruby-fish-0.6.0/ install
 RUN echo 'source /usr/local/share/chruby/chruby.fish' >> /etc/fish/config.fish
 RUN echo 'source /usr/local/share/chruby/auto.fish' >> /etc/fish/config.fish
 
