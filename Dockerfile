@@ -1,19 +1,19 @@
 FROM debian:jessie
 RUN echo 'Updating and upgrading the system'
-RUN apt update
-RUN apt upgrade -y
+RUN apt-get update
+RUN apt-get upgrade -y
 
 RUN echo 'Installing build essentials'
-RUN apt install -y build-essential
+RUN apt-get install -y build-essential
 
 RUN echo 'Installing curl and wget'
-RUN apt install -y curl wget
+RUN apt-get install -y curl wget
 
 RUN echo 'installing fish shell'
 echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/2/Debian_7.0/ /' >> /etc/apt/sources.list.d/fish.list
 curl -Ls http://download.opensuse.org/repositories/shells:fish:release:2/Debian_7.0/Release.key | apt-key add -
-RUN apt update
-RUN apt install -y fish
+RUN apt-get update
+RUN apt-get install -y fish
 RUN chsh -s /usr/bin/fish
 
 RUN echo 'installing ruby install'
@@ -34,12 +34,12 @@ RUN echo 'Creating dev user'
 RUN useradd -m -p dev -s /usr/bin/fish dev
 
 RUN echo 'Installing ruby dependencies'
-RUN apt install -y zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev
+RUN apt-get install -y zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev
 
 RUN echo 'Installing ruby 2.2.1 under dev user'
 RUN su -l dev -c 'ruby-install ruby 2.2.1 --no-install-deps'
 RUN sc -l dev -c "echo '2.2.1' > ~/.ruby-version"
 
 # install pg lib
-RUN apt install -y libpq-dev
+RUN apt-get install -y libpq-dev
 
