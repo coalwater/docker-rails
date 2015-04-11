@@ -34,11 +34,11 @@ RUN echo 'Creating dev user'
 RUN useradd -m -p dev -s /usr/bin/fish dev
 
 RUN echo 'Installing ruby dependencies'
-RUN apt-get install -y zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev
+RUN apt-get install -qqy zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev
 
 RUN echo 'Installing ruby 2.2.1 under dev user'
 RUN su -l dev -c 'ruby-install ruby 2.2.1 --no-install-deps'
-RUN sc -l dev -c "echo '2.2.1' > ~/.ruby-version"
+RUN su -l dev -c "echo '2.2.1' > ~/.ruby-version"
 
 # install pg lib
 RUN apt-get install -y libpq-dev
