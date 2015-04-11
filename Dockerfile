@@ -1,19 +1,19 @@
 FROM debian:jessie
 RUN echo 'Updating and upgrading the system'
-RUN apt-get update
-RUN apt-get upgrade -y
+RUN apt-get -qq update
+RUN apt-get -qqy upgrade
 
 RUN echo 'Installing build essentials'
-RUN apt-get install -y build-essential
+RUN apt-get install -qqy build-essential
 
 RUN echo 'Installing curl and wget'
-RUN apt-get install -y curl wget
+RUN apt-get install -qqy curl wget
 
 RUN echo 'installing fish shell'
 echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/2/Debian_7.0/ /' >> /etc/apt/sources.list.d/fish.list
 curl -Ls http://download.opensuse.org/repositories/shells:fish:release:2/Debian_7.0/Release.key | apt-key add -
-RUN apt-get update
-RUN apt-get install -y fish
+RUN apt-get update -qq
+RUN apt-get install -qqy fish
 RUN chsh -s /usr/bin/fish
 
 RUN echo 'installing ruby install'
