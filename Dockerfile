@@ -6,8 +6,8 @@ RUN apt-get -qqy upgrade
 RUN echo 'Installing build essentials'
 RUN apt-get install -qqy build-essential
 
-RUN echo 'Installing curl and wget'
-RUN apt-get install -qqy curl wget
+RUN echo 'Installing curl and wget and git'
+RUN apt-get install -qqy curl wget git
 
 RUN echo 'installing fish shell'
 RUN echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/2/Debian_7.0/ /' >> /etc/apt/sources.list.d/fish.list
