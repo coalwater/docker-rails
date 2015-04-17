@@ -36,9 +36,12 @@ RUN useradd -m -p dev -s /usr/bin/fish dev
 RUN echo 'Installing ruby dependencies'
 RUN apt-get install -qqy zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev
 
-RUN echo 'Installing ruby 2.2.1 under dev user'
-RUN su -l dev -c 'ruby-install ruby 2.2.1 --no-install-deps'
-RUN su -l dev -c "echo '2.2.1' > ~/.ruby-version"
+RUN echo 'Installing ruby 2.2.2 under dev user'
+RUN su -l dev -c 'ruby-install ruby 2.2.2 --no-install-deps'
+RUN su -l dev -c "echo '2.2.2' > ~/.ruby-version"
+
+RUN echo 'Installing ruby 2.1.6 under dev user'
+RUN su -l dev -c 'ruby-install ruby 2.1.6 --no-install-deps'
 
 # install pg lib
 RUN apt-get install -y libpq-dev
