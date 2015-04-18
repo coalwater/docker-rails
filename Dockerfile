@@ -43,6 +43,8 @@ RUN su -l dev -c "echo '2.2.2' > ~/.ruby-version"
 RUN echo 'Installing ruby 2.1.6 under dev user'
 RUN su -l dev -c 'ruby-install ruby 2.1.6 --no-install-deps'
 
-# install pg lib
+# install pg developement lib for pg gem
 RUN apt-get install -y libpq-dev
 
+# install mysql dev lib for mysql2 gem
+RUN apt-get install -y libmysqlclient-dev
