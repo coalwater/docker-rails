@@ -48,3 +48,6 @@ RUN apt-get install -y libpq-dev
 
 # install mysql dev lib for mysql2 gem
 RUN apt-get install -y libmysqlclient-dev
+
+# expose the rails port
+EXPOSE 3000
