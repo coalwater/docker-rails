@@ -38,10 +38,12 @@ RUN apt-get install -qqy zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadli
 
 RUN echo 'Installing ruby 2.2.2 under dev user'
 RUN su -l dev -c 'ruby-install ruby 2.2.2 --no-install-deps'
+RUN su -l dev -c "rm -rf ~/src"
 RUN su -l dev -c "echo '2.2.2' > ~/.ruby-version"
 
 RUN echo 'Installing ruby 2.1.6 under dev user'
 RUN su -l dev -c 'ruby-install ruby 2.1.6 --no-install-deps'
+RUN su -l dev -c "rm -rf ~/src"
 
 # install pg developement lib for pg gem
 RUN apt-get install -y libpq-dev
